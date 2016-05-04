@@ -9,8 +9,8 @@ CompressorJs is an open source library providing client side image compression t
 
 2. Set up your html form. If you want a preview like the demo, you will also have to create a preview box.
 
-			<form action="server/processImage.php">
-				<input type="file" id="CompressorFiles" multiple/>
-				<input type="submit" value="Press to submit!"/><br/>
-				<div id="preview"></div>
-			</form>
+		<form action="server/processImage.php">
+			<input type="file" id="CompressorFiles" multiple/>
+			<input type="submit" value="Press to submit!"/><br/>
+			<div id="preview"></div>
+		</form>
