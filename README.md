@@ -4,12 +4,6 @@ CompressorJs is an open source library providing client side image compression t
 Inline-style: 
 ![alt tag](https://raw.githubusercontent.com/jbpark0509/CompressorJs/master/image/demo.png)
 
-Reference-style: 
-![alt text][logo]
-
-[logo]: https://github.com/jbpark0509/CompressorJs/image/demo.png "Logo Title Text 2"
-
-
 ## Installation
 
 1. Download CompressorJs.js and include it in your project. Then CompressorJs will be available in your window object as window.CompressorJs!
