@@ -41,6 +41,8 @@ CompressorJs is an open source library providing client side image compression t
 
 ## Configuration
 
+You can declare your CompressorJs with the following options:
+
 Option | Description
 ------ | -----------
 maxWidth | Max width of ouput image. Default value is set to 1024.
@@ -53,3 +55,6 @@ outputName | Name to be sent to your server. Default is set to myfiles[].
 befsend | Function to be executed before images are sent to the server.
 callback | Function to be executed after images are sent to the server.
 error | Function to be executed if error in sending images to the server.
+
+## Developed By
+Jeong Park <jbpark0509@hotmail.com>
