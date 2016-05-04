@@ -2,12 +2,12 @@
 CompressorJs is an open source library providing client side image compression to reduce upload time and bandwidth.
 
 Inline-style: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/jbpark0509/CompressorJs/image/demo.png "Logo Title Text 1")
 
 Reference-style: 
 ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
+[logo]: https://github.com/jbpark0509/CompressorJs/image/demo.png "Logo Title Text 2"
 
 
 ## Installation
