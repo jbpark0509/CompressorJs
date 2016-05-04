@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>CompressorJs</title>
+	<script src="javascript/CompressorJs.min.js"></script>
+	<link rel="stylesheet" href="css/CompressorJs.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+	<h1>CompressorJs</h1>
+	
+	<h2>
+		CompressorJs is an open source library providing client side image compression to reduce upload
+		time and bandwidth.
+	</h2>
+	
+	<p>
+		It's lightweight and doesn't depend on any other libraries.
+	</p>
+	
+	<div class="demo">
+		<h3>Demo</h3>
+		<p>Upload your images and press submit!</p>
+		<form action="server/processImage.php">
+			<input type="file" id="CompressorFiles" multiple/>
+			<input type="submit" value="Press to submit!"/><br/>
+			<div id="preview"></div>
+			<div class= "response">
+				Response from Server:
+				<div id="server-response"></div>
+			</div>
+		</form>
+		
+		<script type="text/javascript">
+			var serverResponse = document.getElementById("server-response");
+			
+			var myCompressor = new CompressorJs('CompressorFiles', {
+				previewId: "preview",
+				quality: 70,
+				maxWidth: 700,
+				befsend: function(xhr, CompressorJs){
+					CompressorJs.preview.style.pointerEvents = 'none';
+					if(CompressorJs.filesArray[0]){
+						CompressorJs.progressContainer.style.display = 'block';
+					}
+				},
+				callback: function(callback, CompressorJs){
+					serverResponse.innerHTML = "I received the following images! <br/>" + callback;
+					CompressorJs.filesArray = [];
+					if(CompressorJs.preview){
+						CompressorJs.preview.innerHTML = "";
+						CompressorJs.setPreviewContainer();
+						CompressorJs.preview.style.pointerEvents = 'auto';
+					}
+				},
+				error: function(){}
+			});
+		</script>
+	</div>
+	
+	<div class="installation">
+		<h3>Installation</h3>
+		
+		<p>
+			1. Download CompressorJs.js and include it in your project. Then CompressorJs will be
+			available in your window object as window.CompressorJs!
+<xmp style="text-align:left">
+<script src="path/CompressorJs.js"></script>
+</xmp>
+			
+			2. Set up your html form. If you want a preview like the demo, you will also have to 
+			create a preview box.
+<xmp style="text-align:left">
+<form action="server/processImage.php">
+	<input type="file" id="CompressorFiles" multiple/>
+	<input type="submit" value="Press to submit!"/><br/>
+	<div id="preview"></div>
+</form>
+</xmp>
+			
+			3. Declare your own CompressorJs. *CompressorJS does not handle server side of your project!*
+			Here is an example of a CompressorJs declaration.
+<xmp style="text-align:left">
+var myCompressor = new CompressorJs('CompressorFiles', {
+	previewId: "preview",			
+	quality: 70,					
+	maxWidth: 700,					
+	befsend: function(xhr, CompressorJs){
+		CompressorJs.preview.style.pointerEvents = 'none';
+		if(CompressorJs.filesArray[0]){
+			CompressorJs.progressContainer.style.display = 'block';
+		}
+	},
+	callback: function(callback, CompressorJs){
+		serverResponse.innerHTML = "I received the following images! <br/>" + callback;
+		CompressorJs.filesArray = [];
+		if(CompressorJs.preview){
+			CompressorJs.preview.innerHTML = "";
+			CompressorJs.setPreviewContainer();
+			CompressorJs.preview.style.pointerEvents = 'auto';
+		}
+	},
+	error: function(){}
+});
+</xmp>
+		</p>
+	</div>
+	
+	<div class="config">
+		
+		<h3>Configuration</h3>
+		<p>
+			You can declare your CompressorJs with the following options:
+			<table>
+				<tr>
+					<td class="table-heading">
+						Option
+					</td>
+					<td class="table-heading">
+						Description
+					</td>
+				</tr>
+				<tr>
+					<td>
+						maxWidth
+					</td>
+					<td>
+						Max width of ouput image. Default value is set to 1024.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						maxHeight
+					</td>
+					<td>
+						Max height of ouput image. Default value is set to 1024.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						quality
+					</td>
+					<td>
+						Quality of output image. Default value is set to 100.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						multiple
+					</td>
+					<td>
+						Determine your file input is set to multiple. Default is set to true.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						allowedExtensions
+					</td>
+					<td>
+						Allowed extensions for your image files. Default is set to .png, .jpeg .jpg .gif.
+						To configure allowedExtension, use the following format: "png|jpeg|jpg|gif"
+					</td>
+				</tr>
+				<tr>
+					<td>
+						previewId
+					</td>
+					<td>
+						Preview container id. If set to false, preview will not be shown.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						outputName
+					</td>
+					<td>
+						Name to be sent to your server. Default is set to myfiles[].
+					</td>
+				</tr>
+				<tr>
+					<td>
+						befsend
+					</td>
+					<td>
+						Function to be executed before images are sent to the server. 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						callback
+					</td>
+					<td>
+						Function to be executed after images are sent to the server. 
+					</td>
+				</tr>
+				<tr>
+					<td>
+						error
+					</td>
+					<td>
+						Function to be executed if error in sending images to the server. 
+					</td>
+				</tr>
+			</table>
+		</p>
+	</div>
+	
+	<div class="footer">
+		Developed by Jeong Park <br/>
+		jbpark0509@hotmail.com
+	</div>
+</body>
+</html>
