@@ -14,3 +14,27 @@ CompressorJs is an open source library providing client side image compression t
 			<input type="submit" value="Press to submit!"/><br/>
 			<div id="preview"></div>
 		</form>
+		
+3. Declare your own CompressorJs. *CompressorJS does not handle server side of your project!* Here is an example of a CompressorJs declaration.
+
+		var myCompressor = new CompressorJs('CompressorFiles', {
+			previewId: "preview",			
+			quality: 70,					
+			maxWidth: 700,					
+			befsend: function(xhr, CompressorJs){
+				CompressorJs.preview.style.pointerEvents = 'none';
+				if(CompressorJs.filesArray[0]){
+					CompressorJs.progressContainer.style.display = 'block';
+				}
+			},
+			callback: function(callback, CompressorJs){
+				serverResponse.innerHTML = "I received the following images! <br/>" + callback;
+				CompressorJs.filesArray = [];
+				if(CompressorJs.preview){
+					CompressorJs.preview.innerHTML = "";
+					CompressorJs.setPreviewContainer();
+					CompressorJs.preview.style.pointerEvents = 'auto';
+				}
+			},
+			error: function(){}
+		});
