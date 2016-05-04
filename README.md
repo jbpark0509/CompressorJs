@@ -43,5 +43,13 @@ CompressorJs is an open source library providing client side image compression t
 
 Option | Description
 ------ | -----------
-maxWidth | Content from cell 2
-maxHeight | Content in the second column
+maxWidth | Max width of ouput image. Default value is set to 1024.
+maxHeight | Max height of ouput image. Default value is set to 1024.
+quality | Quality of output image. Default value is set to 100.
+multiple | Determine your file input is set to multiple. Default is set to true.
+allowedExtensions | Allowed extensions for your image files. Default is set to .png, .jpeg .jpg .gif. To configure allowedExtension, use the following format: "png|jpeg|jpg|gif"
+previewId | Preview container id. If set to false, preview will not be shown.
+outputName | Name to be sent to your server. Default is set to myfiles[].
+befsend | Function to be executed before images are sent to the server.
+callback | Function to be executed after images are sent to the server.
+error | Function to be executed if error in sending images to the server.
