@@ -38,3 +38,10 @@ CompressorJs is an open source library providing client side image compression t
 			},
 			error: function(){}
 		});
+
+## Configuration
+
+Option | Description
+------ | -----------
+maxWidth | Content from cell 2
+maxHeight | Content in the second column
