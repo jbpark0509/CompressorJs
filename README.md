@@ -56,5 +56,5 @@ befsend | Function to be executed before images are sent to the server.
 callback | Function to be executed after images are sent to the server.
 error | Function to be executed if error in sending images to the server.
 
-## Developed By
+## Author
 Jeong Park <jbpark0509@hotmail.com>
